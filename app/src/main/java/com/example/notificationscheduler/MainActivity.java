@@ -8,12 +8,17 @@ import android.content.ComponentName;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.RadioGroup;
+import android.widget.Switch;
 import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity {
 
     private JobScheduler mScheduler;
     private static final int JOB_ID = 0;
+
+    // Switches for setting job options
+    private Switch mDeviceIdleSwitch;
+    private Switch mDeviceChargingSwitch;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -57,7 +62,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void cancelJobs(View view) {
-        if (mScheduler !== null) {
+        if (mScheduler != null) {
             mScheduler.cancelAll();
             mScheduler = null;
             Toast.makeText(this, "Jobs cancelled", Toast.LENGTH_SHORT).show();
