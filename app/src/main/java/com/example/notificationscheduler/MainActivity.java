@@ -11,6 +11,7 @@ import android.widget.RadioGroup;
 public class MainActivity extends AppCompatActivity {
 
     private JobScheduler mScheduler;
+    private static final int JOB_ID = 0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
