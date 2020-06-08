@@ -49,7 +49,7 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Network Type Required: "
+        android:text="Requires: "
         android:textAppearance="@style/TextAppearance.AppCompat.Subhead"
         android:layout_margin="4dp"
         app:layout_constraintBottom_toBottomOf="parent"
