@@ -8,6 +8,7 @@ import android.content.ComponentName;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.RadioGroup;
+import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -40,8 +41,21 @@ public class MainActivity extends AppCompatActivity {
                 NotificationJobService.class.getName());
         JobInfo.Builder builder = new JobInfo.Builder(JOB_ID, serviceName);
         mScheduler = (JobScheduler) getSystemService(JOB_SCHEDULER_SERVICE);
+        builder.setRequiredNetworkType(selectedNetworkOption);
+
+        boolean constraintSet = selectedNetworkOption != JobInfo.NETWORK_TYPE_NONE;
+        
+        JobInfo myJobInfo = builder.build();
+        mScheduler.schedule(myJobInfo);
+        Toast.makeText(this, "Job Scheduled, job will run when " +
+                "the constraints are met.", Toast.LENGTH_SHORT).show();
     }
 
     public void cancelJobs(View view) {
+        if (mScheduler !== null) {
+            mScheduler.cancelAll();
+            mScheduler = null;
+            Toast.makeText(this, "Jobs cancelled", Toast.LENGTH_SHORT).show();
+        }
     }
 }
