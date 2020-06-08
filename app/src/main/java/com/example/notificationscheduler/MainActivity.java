@@ -49,9 +49,12 @@ public class MainActivity extends AppCompatActivity {
                 NotificationJobService.class.getName());
         JobInfo.Builder builder = new JobInfo.Builder(JOB_ID, serviceName);
         mScheduler = (JobScheduler) getSystemService(JOB_SCHEDULER_SERVICE);
-        builder.setRequiredNetworkType(selectedNetworkOption);
+        builder.setRequiredNetworkType(selectedNetworkOption)
+                .setRequiresDeviceIdle(mDeviceIdleSwitch.isChecked())
+                .setRequiresCharging(mDeviceChargingSwitch.isChecked());
 
-        boolean constraintSet = selectedNetworkOption != JobInfo.NETWORK_TYPE_NONE;
+        boolean constraintSet = (selectedNetworkOption != JobInfo.NETWORK_TYPE_NONE)
+                || mDeviceChargingSwitch.isChecked() || mDeviceIdleSwitch.isChecked();
         if (constraintSet) {
             // Schedule the job and notify the user
             JobInfo myJobInfo = builder.build();
