@@ -24,6 +24,26 @@
         android:layout_height="wrap_content"
         android:orientation="horizontal"
         android:id="@+id/networkOptions"
-        android:layout_margin="4dp"/>
+        android:layout_margin="4dp">
+
+        <RadioButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="None"
+            android:id="@+id/noNetwork"
+            android:checked="true"/>
+
+        <RadioButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Any"
+            android:id="@+id/anyNetwork"/>
+
+        <RadioButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Wifi"
+            android:id="@+id/wifiNetwork"/>
+    </RadioGroup>
 
 </LinearLayout>
