@@ -1,6 +1,7 @@
 package com.example.notificationscheduler;
 
 import android.app.job.JobInfo;
+import android.app.job.JobParameters;
 import android.app.job.JobScheduler;
 import android.app.job.JobWorkItem;
 
@@ -40,5 +41,15 @@ public class NotificationJobService extends JobScheduler {
     @Override
     public JobInfo getPendingJob(int i) {
         return null;
+    }
+
+    @Override
+    public boolean onStartJob(JobParameters jobParameters) {
+
+    }
+
+    @Override
+    public boolean onStopJob(JobParameters jobParameters) {
+
     }
 }
