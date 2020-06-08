@@ -1,15 +1,21 @@
 package com.example.notificationscheduler;
 
+import android.app.NotificationChannel;
 import android.app.NotificationManager;
 import android.app.job.JobInfo;
 import android.app.job.JobParameters;
 import android.app.job.JobScheduler;
 import android.app.job.JobWorkItem;
+import android.graphics.Color;
+import android.os.Build;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
 import java.util.List;
+
+import static android.content.Context.NOTIFICATION_SERVICE;
+import static androidx.core.content.ContextCompat.getSystemService;
 
 public class NotificationJobService extends JobScheduler {
     NotificationManager mNotifyManager;
@@ -52,7 +58,37 @@ public class NotificationJobService extends JobScheduler {
 
     @Override
     public boolean onStartJob(JobParameters jobParameters) {
+        /**
+         * Creates a Notification channel, for OREO and higher
+          */
+        public void createNotificationChannel() {
 
+            // Define notification manager object.
+            mNotifyManager =
+                (NotificationManager) getSystemService(NOTIFICATION_SERVICE);
+
+            // Notification channels are only available in OREO and higher.
+            // So, add a check on SDK version.
+            if (Build.VERSION.SDK_INT >=
+                    Build.VERSION_CODES.O) {
+                // Create the NotificationChannel with all the parameters.
+                NotificationChannel notificationChannel = new NotificationChannel
+                        (PRIMARY_CHANNEL_ID,
+                                "Job Service notification",
+                                NotificationManager.IMPORTANCE_HIGH);
+
+                notificationChannel.enableLights(true);
+                notificationChannel.setLightColor(Color.RED);
+                notificationChannel.enableVibration(true);
+                notificationChannel.setDescription
+                        ("Notification from Job Service");
+
+                mNotifyManager.createNotificationChannel(notificationChannel);
+            }
+        }
+    }
+
+    private Object getSystemService(String notificationService) {
     }
 
     @Override
