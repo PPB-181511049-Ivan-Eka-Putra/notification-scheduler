@@ -81,13 +81,19 @@ public class MainActivity extends AppCompatActivity {
         ComponentName serviceName = new ComponentName(getPackageName(),
                 NotificationJobService.class.getName());
         JobInfo.Builder builder = new JobInfo.Builder(JOB_ID, serviceName);
+
+        if (seekBarSet) {
+            builder.setOverrideDeadline(seekBarInteger * 1000);
+        }
+
         mScheduler = (JobScheduler) getSystemService(JOB_SCHEDULER_SERVICE);
         builder.setRequiredNetworkType(selectedNetworkOption)
                 .setRequiresDeviceIdle(mDeviceIdleSwitch.isChecked())
                 .setRequiresCharging(mDeviceChargingSwitch.isChecked());
 
         boolean constraintSet = (selectedNetworkOption != JobInfo.NETWORK_TYPE_NONE)
-                || mDeviceChargingSwitch.isChecked() || mDeviceIdleSwitch.isChecked();
+                || mDeviceChargingSwitch.isChecked() || mDeviceIdleSwitch.isChecked()
+                || seekBarSet;
         if (constraintSet) {
             // Schedule the job and notify the user
             JobInfo myJobInfo = builder.build();
