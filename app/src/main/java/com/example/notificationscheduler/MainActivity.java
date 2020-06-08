@@ -36,12 +36,36 @@ public class MainActivity extends AppCompatActivity {
         mDeviceChargingSwitch = findViewById(R.id.chargingSwitch);
 
         mSeekBar = findViewById(R.id.seekBar);
+
+        mSeekBar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
+            @Override
+            public void onProgressChanged(SeekBar seekBar, int i, boolean b) {
+                if (i > 0) {
+                    seekBarProgress.setText(i + " s");
+                } else {
+                    seekBarProgress.setText("Not Set");
+                }
+            }
+
+            @Override
+            public void onStartTrackingTouch(SeekBar seekBar) {
+
+            }
+
+            @Override
+            public void onStopTrackingTouch(SeekBar seekBar) {
+
+            }
+        });
     }
 
     public void scheduleJob(View view) {
+
         RadioGroup networkOptions = findViewById(R.id.networkOptions);
         int selectedNetworkID = networkOptions.getCheckedRadioButtonId();
         int selectedNetworkOption = JobInfo.NETWORK_TYPE_NONE;
+        int seekBarInteger = mSeekBar.getProgress();
+        boolean seekBarSet = seekBarInteger > 0;
         switch(selectedNetworkID) {
             case R.id.noNetwork:
                 selectedNetworkOption = JobInfo.NETWORK_TYPE_NONE;
