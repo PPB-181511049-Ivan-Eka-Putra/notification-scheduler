@@ -112,10 +112,11 @@ public class NotificationJobService extends JobScheduler {
     }
 
     private Object getSystemService(String notificationService) {
+
     }
 
     @Override
     public boolean onStopJob(JobParameters jobParameters) {
-        
+        return true;
     }
 }
