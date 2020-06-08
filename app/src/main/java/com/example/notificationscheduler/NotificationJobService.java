@@ -1,5 +1,6 @@
 package com.example.notificationscheduler;
 
+import android.app.NotificationManager;
 import android.app.job.JobInfo;
 import android.app.job.JobParameters;
 import android.app.job.JobScheduler;
@@ -11,6 +12,12 @@ import androidx.annotation.Nullable;
 import java.util.List;
 
 public class NotificationJobService extends JobScheduler {
+    NotificationManager mNotifyManager;
+
+    // Notification Channel ID.
+    private static final String PRIMARY_CHANNEL_ID =
+            "primary_notification_channel";
+
     @Override
     public int schedule(@NonNull JobInfo jobInfo) {
         return 0;
