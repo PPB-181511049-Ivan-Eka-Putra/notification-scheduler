@@ -31,6 +31,8 @@ public class MainActivity extends AppCompatActivity {
 
         mDeviceIdleSwitch = findViewById(R.id.idleSwitch);
         mDeviceChargingSwitch = findViewById(R.id.chargingSwitch);
+
+        mSeekBar = findViewById(R.id.seekBar);
     }
 
     public void scheduleJob(View view) {
