@@ -19,6 +19,11 @@ public class MainActivity extends AppCompatActivity {
         RadioGroup networkOptions = findViewById(R.id.networkOptions);
         int selectedNetworkID = networkOptions.getCheckedRadioButtonId();
         int selectedNetworkOption = JobInfo.NETWORK_TYPE_NONE;
+        switch(selectedNetworkID) {
+            case R.id.noNetwork:
+            case R.id.anyNetwork:
+            case R.id.wifiNetwork:
+        }
     }
 
     public void cancelJobs(View view) {
