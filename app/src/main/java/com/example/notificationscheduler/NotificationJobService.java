@@ -3,61 +3,19 @@ package com.example.notificationscheduler;
 import android.app.NotificationChannel;
 import android.app.NotificationManager;
 import android.app.PendingIntent;
-import android.app.job.JobInfo;
 import android.app.job.JobParameters;
-import android.app.job.JobScheduler;
-import android.app.job.JobWorkItem;
+import android.app.job.JobService;
 import android.content.Intent;
 import android.graphics.Color;
 import android.os.Build;
-
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
 import androidx.core.app.NotificationCompat;
 
-import java.util.List;
-
-import static android.content.Context.NOTIFICATION_SERVICE;
-import static androidx.core.content.ContextCompat.getSystemService;
-
-public class NotificationJobService extends JobScheduler {
+public class NotificationJobService extends JobService {
     NotificationManager mNotifyManager;
 
     // Notification Channel ID.
     private static final String PRIMARY_CHANNEL_ID =
             "primary_notification_channel";
-
-    @Override
-    public int schedule(@NonNull JobInfo jobInfo) {
-        return 0;
-    }
-
-    @Override
-    public int enqueue(@NonNull JobInfo jobInfo, @NonNull JobWorkItem jobWorkItem) {
-        return 0;
-    }
-
-    @Override
-    public void cancel(int i) {
-
-    }
-
-    @Override
-    public void cancelAll() {
-
-    }
-
-    @NonNull
-    @Override
-    public List<JobInfo> getAllPendingJobs() {
-        return null;
-    }
-
-    @Nullable
-    @Override
-    public JobInfo getPendingJob(int i) {
-        return null;
-    }
 
     @Override
     public boolean onStartJob(JobParameters jobParameters) {
@@ -109,10 +67,6 @@ public class NotificationJobService extends JobScheduler {
 
             mNotifyManager.createNotificationChannel(notificationChannel);
         }
-    }
-
-    private Object getSystemService(String notificationService) {
-
     }
 
     @Override
