@@ -13,6 +13,7 @@ import android.os.Build;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.core.app.NotificationCompat;
 
 import java.util.List;
 
@@ -67,6 +68,19 @@ public class NotificationJobService extends JobScheduler {
         // Set up the notification content intent to launch the app when clicked
         PendingIntent contentPendingIntent = PendingIntent.getActivity
                 (this, 0, new Intent(this, MainActivity.class), PendingIntent.FLAG_UPDATE_CURRENT);
+
+        NotificationCompat.Builder builder = new NotificationCompat.Builder
+                (this, PRIMARY_CHANNEL_ID)
+                .setContentTitle("Job Service")
+                .setContentText("Your Job ran to completion!")
+                .setContentIntent(contentPendingIntent)
+                .setSmallIcon(R.drawable.ic_job_running)
+                .setPriority(NotificationCompat.PRIORITY_HIGH)
+                .setDefaults(NotificationCompat.DEFAULT_ALL)
+                .setAutoCancel(true);
+
+        mNotifyManager.notify(0, builder.build());
+        return false;
     }
 
     /**
@@ -102,6 +116,6 @@ public class NotificationJobService extends JobScheduler {
 
     @Override
     public boolean onStopJob(JobParameters jobParameters) {
-
+        
     }
 }
