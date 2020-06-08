@@ -33,6 +33,8 @@ public class MainActivity extends AppCompatActivity {
                 selectedNetworkOption = JobInfo.NETWORK_TYPE_UNMETERED;
                 break;
         }
+
+        mScheduler = (JobScheduler) getSystemService(JOB_SCHEDULER_SERVICE);
     }
 
     public void cancelJobs(View view) {
