@@ -21,8 +21,14 @@ public class MainActivity extends AppCompatActivity {
         int selectedNetworkOption = JobInfo.NETWORK_TYPE_NONE;
         switch(selectedNetworkID) {
             case R.id.noNetwork:
+                selectedNetworkOption = JobInfo.NETWORK_TYPE_NONE;
+                break;
             case R.id.anyNetwork:
+                selectedNetworkOption = JobInfo.NETWORK_TYPE_ANY;
+                break;
             case R.id.wifiNetwork:
+                selectedNetworkOption = JobInfo.NETWORK_TYPE_UNMETERED;
+                break;
         }
     }
 
