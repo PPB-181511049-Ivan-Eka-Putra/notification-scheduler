@@ -8,6 +8,7 @@ import android.content.ComponentName;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.RadioGroup;
+import android.widget.SeekBar;
 import android.widget.Switch;
 import android.widget.Toast;
 
@@ -19,6 +20,9 @@ public class MainActivity extends AppCompatActivity {
     // Switches for setting job options
     private Switch mDeviceIdleSwitch;
     private Switch mDeviceChargingSwitch;
+
+    // Override deadline seekbar
+    private SeekBar mSeekBar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
