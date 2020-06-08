@@ -3,11 +3,14 @@ package com.example.notificationscheduler;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.job.JobInfo;
+import android.app.job.JobScheduler;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.RadioGroup;
 
 public class MainActivity extends AppCompatActivity {
+
+    private JobScheduler mScheduler;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
