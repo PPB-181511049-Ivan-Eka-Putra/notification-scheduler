@@ -63,6 +63,17 @@
         android:orientation="horizontal"
         android:layout_margin="4dp">
 
+        <Switch
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Device Idle"
+            android:id="@+id/idleSwitch" />
+
+        <Switch
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Device Charging"
+            android:id="@+id/chargingSwitch" />
     </LinearLayout>
 
     <Button
